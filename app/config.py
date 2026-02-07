@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI
-
+ 
 from .db import create_db_and_tables
 
 from fastapi_pagination import add_pagination

@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: DBhavirkesht          # دقیقاً همین نام رو استفاده کن (حساس به حروف بزرگ/کوچک)
+    ports:
+      - "5433:5432"                       # ← مهم: 5432 رو روی localhost اشغال نکن → 5433 مپ کن
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"                       # یا 5000:5000 یا هر پورتی که FastAPI/Flask استفاده می‌کنه
+    environment:
+      - DATABASE_URL=postgresql://postgres:123456@db:5432/DBhavirkesht
+    # اگر نیاز به volume برای کد داری (توسعه سریع):
+    # volumes:
+    #   - .:/app
+
+volumes:
+  postgres_data:

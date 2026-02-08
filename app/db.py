@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker, declarative_base
 
 # 🔹 PostgreSQL connection URL
-DATABASE_URL = "postgresql://postgres:123456@localhost:5432/DBhavirkesht"
+DATABASE_URL = "postgresql://postgres:123456@db:5432/DBhavirkesht"
 
 engine = create_engine(
 DATABASE_URL,

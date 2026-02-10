@@ -25,7 +25,7 @@ services:
       - DATABASE_URL=postgresql://postgres:123456@db:5432/DBhavirkesht
     # اگر نیاز به volume برای کد داری (توسعه سریع):
     # volumes:
-    #   - .:/app
+    #   - .:/app hhj
 
 volumes:
   postgres_data:
